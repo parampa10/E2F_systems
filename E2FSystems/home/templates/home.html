@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
+<body class="app">
+
+  <div class="outer">
+    <div class="">
+        <h1 class="headingGT"><span style="color: green">Green</span>Thumb</h1>
+        <p class="para">Funding for energy projects (Business)</p>
+        <form action="/result/" method="post" >
+            {% csrf_token %}
+        <div class="option_box">
+            <div class="colspan1"></div>
+            <div class="colspan2">
+                <select id="countries" class="optionselection">
+                    <option selected>Employee Count</option>
+                </select>
+            </div>
+            <div class="colspan2">
+                <select id="countries" class="optionselection">
+                    <option selected>Company Selector</option>
+                </select>
+            </div>
+            <div class="colspan2">
+                <select id="countries" class="optionselection">
+                    <option selected>Postal Code</option>
+                </select>
+            </div>
+            <div class="colspan2">
+                <select id="countries" class="optionselection">
+                    <option selected>Anual Electricity Budget</option>
+                </select>
+            </div>
+            <div class="colspan2">
+                <select id="countries" class="optionselection">
+                    <option selected>Anual Natural Gas Budget</option>
+                </select>
+            </div>
+            <div class="colspan12 mt8">
+                <button type="submit" class="button" >Search</button>
+            </div>
+            
+        </div></form>
+    </div>
+    <!-- <div class="grid grid-cols-12">
+        <div class="col-span-12 pt-4">
+            <router-link to="/" class="mr-2 text-white bg-btnDark hover:bg-btnDarkHover focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md px-10 py-2 text-sm text-center disabled:opacity-75 disabled:cursor-not-allowed">Employee</router-link>
+            <router-link to="/emp_add" class="mr-2 text-white bg-btnDark hover:bg-btnDarkHover focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md px-10 py-2 text-sm text-center disabled:opacity-75 disabled:cursor-not-allowed">Employee Add</router-link>
+        </div>
+    </div> -->
+</div>
+
+<footer class="">
+    <div class="footer1">
+        <hr class="footerhr" />
+        <span class="footertext">© 2023 <a href="https://flowbite.com/" class="hover:underline">www.e2fsystems.com</a>. All Rights Reserved.</span>
+    </div>
+</footer>
+
+
+
+</body>
+</html>
