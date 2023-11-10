@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render
-
-from home.models import Admin, Program
+from django.db.models import Q
+from home.models import Admin, Program, UserSearch
 
 # Create your views here.
 def home(request):
@@ -27,6 +27,63 @@ def admin_login(request):
         else:
             fail_msg="Password is incorrect"
             return render(request,'admin_login.html',{'fail_msg':fail_msg})
+
+def search(request):
+
+    if request.method == 'POST':
+
+        program_type_s = request.POST.get('program_type')
+        company_sector_s=request.POST["company_sector"]
+        postal_code_s=request.POST["postal_code"]
+        employee_count_s=request.POST["employee_count"]
+        electricity_budget_s=request.POST["electricity_budget"]
+        natural_gas_budget_s=request.POST["natural_gas_budget"]
+        company_name_s=request.POST["company_name"]
+        company_contact_s=request.POST["company_contact"]
+
+
+        Program.objects.all()
+
+        if program_type_s=="electricity":
+            type_s="SaveOnEnergy"
+        else:
+            type_s="ENBRIDGE GAS"
+
+        programs = Program.objects.filter(
+
+            Q(funding_stream__contains=type_s)|
+            Q(funding_stream__contains=type_s)|
+
+            Q(eligibility__contains=company_sector_s) |
+            Q(project_type__contains=company_sector_s) |
+
+            Q(eligibility__contains=employee_count_s) | 
+
+            Q(eligibility__contains=electricity_budget_s) | 
+
+            Q(eligibility__contains=natural_gas_budget_s)
+        )
+
+        
+        print(programs)
+
+        ##saving search for future 
+        new_search=UserSearch(
+
+            funding_stream=program_type_s,
+            company_sector=company_sector_s,
+            postal_code=postal_code_s,
+            employee_count=employee_count_s,
+            estimated_annual_electricity_budget=electricity_budget_s,
+            estimated_annual_natural_gas_budget=natural_gas_budget_s,
+            company_name=company_name_s,
+            company_contact=company_contact_s
+            )
+
+        new_search.save()
+        
+
+        return render(request,'result.html',{"programs":programs})
 
 def add_program(request):
 
@@ -67,3 +124,7 @@ def add_program(request):
         new_program.save()
         add_success="Program Added Successfully!"
         return render(request,'add_program.html',{'success_msg':add_success})
+
+def contact_us(request):
+    if request.method == "GET":
+        return render(request,'contact.html')

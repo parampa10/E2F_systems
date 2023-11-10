@@ -2,7 +2,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script>
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+              return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        </script>
+    
+    
     </head>
 <body class="app">
 
@@ -10,40 +32,59 @@
     <div class="">
         <h1 class="headingGT"><span style="color: green">Green</span>Thumb</h1>
         <p class="para">Funding for energy projects (Business)</p>
-        <form action="/result/" method="post" >
-            {% csrf_token %}
-        <div class="option_box">
-            <div class="colspan1"></div>
-            <div class="colspan2">
-                <select id="countries" class="optionselection">
-                    <option selected>Employee Count</option>
-                </select>
-            </div>
-            <div class="colspan2">
-                <select id="countries" class="optionselection">
-                    <option selected>Company Selector</option>
-                </select>
-            </div>
-            <div class="colspan2">
-                <select id="countries" class="optionselection">
-                    <option selected>Postal Code</option>
-                </select>
-            </div>
-            <div class="colspan2">
-                <select id="countries" class="optionselection">
-                    <option selected>Anual Electricity Budget</option>
-                </select>
-            </div>
-            <div class="colspan2">
-                <select id="countries" class="optionselection">
-                    <option selected>Anual Natural Gas Budget</option>
-                </select>
-            </div>
-            <div class="colspan12 mt8">
-                <button type="submit" class="button" >Search</button>
-            </div>
+        <div class="container mt-3">
+            <form method="POST" action="/search/" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <div class="mb-3 mt-3">
+                    <label style="display:flex" for="email">Program Type: &nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Program type: save on energy or enbridge gas program"></span></label>
             
-        </div></form>
+                    <select name="program_type" class="form-select" aria-label="Default select example" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                        <option value="electricity" selected>Electricity</option>
+                        <option value="gas">Gas</option>
+                    </select>
+                
+                </div>
+                
+                <div class="mb-3">
+                    <label for="pwd" style="display:flex">Company Sector:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="company's particular work-field"></span></label>
+                    <input type="text" class="form-control" placeholder="Enter Company Sector" name="company_sector" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                </div>
+
+                <div class="mb-3">
+                <label for="pwd" style="display:flex">Postal Code:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="postal-code"></span></label>
+                <input type="text" class="form-control" placeholder="Enter Postal Code" name="postal_code">
+                </div>
+    
+                <div class="mb-3">
+                    <label for="pwd" style="display:flex">Employee Count:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="size of the company aprroximately"></span></label>
+                    <input type="text" class="form-control" placeholder="Enter Employee Count" name="employee_count">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="pwd" style="display:flex">Annual Electricity budget:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="estimated electricity budget for your company"></span></label>
+                    <input type="text" class="form-control" id="pwd" placeholder="Enter Annual Electricity budget" name="electricity_budget">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="pwd" style="display:flex">Annual Natural Gas budget:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="estimated gas budget for your company"></span></label>
+                    <input type="text" class="form-control" id="pwd" placeholder="Enter Annual Natural Gas budget" name="natural_gas_budget">
+                </div>
+    
+                <div class="mb-3">
+                    <label for="pwd" style="display:flex">Company name: (optional)&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's name"></span></label>
+                    <input type="text" class="form-control" placeholder="Enter Company Name" name="company_name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="pwd" style="display:flex">Company Contact: (optional)&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's conatact"></span></label>
+                    <input type="text" class="form-control" placeholder="Enter Company Contact" name="company_contact">
+                </div>
+                
+                <button type="submit" class="btn btn-outline-info">Search</button>
+            </form>
+            <br>
+        </div>
     </div>
     <!-- <div class="grid grid-cols-12">
         <div class="col-span-12 pt-4">
@@ -51,6 +92,13 @@
             <router-link to="/emp_add" class="mr-2 text-white bg-btnDark hover:bg-btnDarkHover focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md px-10 py-2 text-sm text-center disabled:opacity-75 disabled:cursor-not-allowed">Employee Add</router-link>
         </div>
     </div> -->
+    <div>
+            <div class="inline-flex">
+                
+                <a href="/contact_us/"><button type="button" class="btn btn-outline-primary">Contact Us</button></a>
+                <button type="button" class="btn btn-outline-danger">Subscribe</button>
+            </div>
+        </div>
 </div>
 
 <footer class="">
@@ -61,6 +109,11 @@
 </footer>
 
 
-
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 </body>
 </html>
