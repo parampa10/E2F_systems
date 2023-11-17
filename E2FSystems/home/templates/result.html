@@ -28,9 +28,9 @@
         
         <div class="container">
         {% for p in programs %}
-            <div class="card">
-                <div class="card-header">{{p.program_name}}</div>
-                <div class="card-body">
+            <div class="card" style="border: 0cap;">
+                <div class="card-header" style="background-color:#6F8544;box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); font-size: 1.5rem; font-weight: bold;">{{p.program_name}}</div>
+                <div class="card-body" style="background-color:#C7CFB7;box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
                     {{p.link}}
                 </div>
             </div>
@@ -58,9 +58,13 @@
         </div>
         <div>
             <div class="inline-flex">
-                <a href="/contact_us/"><button type="button" class="btn btn-outline-primary">Contact Us</button></a>
-                <button type="button" class="btn btn-outline-danger">Subscribe</button>
+                <a href="/contact_us/"><button type="button" class="btn btn-primary">Contact Us</button></a>
+                <button type="button" class="btn btn-danger">Subscribe</button>
+                <br>
+                <br>
+                <a href="/"><button type="button" class="btn btn-success">Back</button></a>  
             </div>
+                    
         </div>
     </div>
     <!-- <div class="grid grid-cols-12">

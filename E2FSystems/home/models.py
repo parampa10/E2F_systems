@@ -27,3 +27,8 @@ class UserSearch(models.Model):
     estimated_annual_electricity_budget = models.CharField(max_length=255)
     company_name = models.TextField(blank=True)
     company_contact = models.TextField(blank=True)
+
+class ContactInfo(models.Model):
+    contact_email = models.CharField(max_length=255)
+    contact_company = models.CharField(max_length=255)
+    additional_info = models.CharField(max_length=255, null=True, default=None)

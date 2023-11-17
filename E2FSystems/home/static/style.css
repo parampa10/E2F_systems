@@ -4,18 +4,22 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities'; 
 
-/* Your custom styles go here */
-
+body.app {
+  background: url('img.jpg')no-repeat;
+  background-size: cover; 
+  background-position: center; 
+  
+}
 
 .app {
+  background-color: transparent; 
+  background-image: none; 
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
-
-
 
 .button {
   --c: #229091; /* the color*/
@@ -75,7 +79,7 @@ line-height: 2.5rem;
 font-weight: 800; 
 letter-spacing: -0.025em; 
 line-height: 1; 
-color: #000000; 
+color: #000000;
 
 
 @media (min-width: 768px) { 

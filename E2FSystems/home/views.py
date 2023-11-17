@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render
 from django.db.models import Q
-from home.models import Admin, Program, UserSearch
+from home.models import Admin, ContactInfo, Program, UserSearch
 
 # Create your views here.
 def home(request):
@@ -128,3 +128,18 @@ def add_program(request):
 def contact_us(request):
     if request.method == "GET":
         return render(request,'contact.html')
+    else:
+        ## getting data from user
+        contact_email_c=request.POST["contact_email"]
+        contact_company_c=request.POST["contact_company"]
+        additional_info_c=request.POST["additional_info"]
+
+        new_inquiry=ContactInfo(
+            contact_email=contact_email_c,
+            contact_company=contact_company_c,
+            additional_info=additional_info_c
+            )
+
+        new_inquiry.save()
+        add_success="Request Sent Successfully!"
+        return render(request,'contact.html',{'success_msg':add_success})

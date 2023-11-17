@@ -19,13 +19,52 @@
         <p class="para">Funding for energy projects (Business)</p>
         
         <div>
-            <div class="card m-5 text-center" >
-                <div class="card-header">
+            <div class="card m-5 text-center" style="border: 0cap;" >
+                <div class="card-header header-card" style="background-color:#6F8544;box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); font-size: 1.5rem; font-weight: bold;">
                     Contact Information
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title">Email:</h5>
-                  
+                <div class="card-body" style="background-color:#C7CFB7;box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
+                  <h5 class="para" style="text-align: left; color: black; font-weight: bold; ">Energy & Sustainability Made Easy</h5>
+                  <h6 class="para" style="text-align: left; color: black; font-size: medium;">The sustainability-focused economy is here, and it's demanding change. Our proven solutions and services will improve your business operations, reduce your environmental impact, and give you a strategic advantage over your competitors. Together we can stop energy waste, reduce costs and advance sustainability.
+                    <br>
+                    <b>Act today with tomorrow in mind so future generations can enjoy a cleaner, greener earth.</b></h6>
+                </div>
+              </div>
+        </div>
+
+        <div>
+            <div class="card m-5 text-center" style="border: 0cap;" >
+                
+                <div class="card-body" style="background-color:#C7CFB7;box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
+                  <h5 class="para" style="text-align: left; color: black; font-weight: bold; ">Send Enquiry</h5>
+                  <h6 class="para" style="text-align: left; color: black; font-size: medium;">
+                    <form method="POST" action="/contact_us/" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% if success_msg %}
+                            <div class="alert alert-success" role="alert">
+                                {{success_msg}}
+                            </div>
+                        {% endif %}
+                        <div class="mb-3">
+                            <label for="pwd" style="display:flex">Email:&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="estimated gas budget for your company"></span></label>
+                            <input type="text" class="form-control" id="pwd" placeholder="Enter Email" name="contact_email">
+                        </div>
+            
+                        <div class="mb-3">
+                            <label for="pwd" style="display:flex">Company name:&nbsp;&nbsp;<span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's name"></span></label>
+                            <input type="text" class="form-control" placeholder="Enter Company Name" name="contact_company">
+                        </div>
+        
+                        <div class="mb-3">
+                            <label for="pwd" style="display:flex">Additional Info.&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's conatact"></span></label>
+                            <input type="text" class="form-control" placeholder="Enter Additional Info." name="additional_info">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-outline-info"> Send </button>
+                    </form>
+                    <br>
+                    <b>Phone: +1 (999)-999-9999 </b><br>
+                    <b>Email: plamen.notov@e2fsystems.com</b></h6>
                 </div>
               </div>
         </div>
