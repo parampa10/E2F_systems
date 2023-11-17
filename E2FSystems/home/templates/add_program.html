@@ -18,6 +18,7 @@
         <a href="/download_data/"><button  class="btn btn-success m-2">Download All Data</button></a>
     </div>
     <div class="container mt-3">
+        <h4>Add New Program</h4>
         <form method="POST" action="/add_program/" enctype="multipart/form-data">
             {% csrf_token %}
             {% if success_msg %}
