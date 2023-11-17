@@ -1,7 +1,11 @@
+import csv
+from http.client import HTTPResponse
+from django.http import HttpResponse
 import os
 from django.shortcuts import render
 from django.db.models import Q
-from home.models import Admin, ContactInfo, Program, UserSearch
+from home.models import Admin, Program, UserSearch
+from openpyxl import Workbook
 
 # Create your views here.
 def home(request):
@@ -124,7 +128,7 @@ def add_program(request):
         new_program.save()
         add_success="Program Added Successfully!"
         return render(request,'add_program.html',{'success_msg':add_success})
-
+    
 def contact_us(request):
     if request.method == "GET":
         return render(request,'contact.html')
@@ -142,4 +146,32 @@ def contact_us(request):
 
         new_inquiry.save()
         add_success="Request Sent Successfully!"
-        return render(request,'contact.html',{'success_msg':add_success})
+        return render(request,'contact.html',{'success_msg':add_success})    
+
+def download_data(request):
+
+    data = Program.objects.all()
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="table_data.csv"'
+
+    writer = csv.writer(response)
+
+    # Write headers
+    headers = ['id', 'program_name', 'eligibility', 'link', 'project_type', 'description', 'funding_stream']
+    writer.writerow(headers)
+
+    # Write data rows
+    for row in data:
+        row_data = [row.id, row.program_name, row.eligibility, row.link, row.project_type, row.description, row.funding_stream]
+        writer.writerow(row_data)
+    return response
+
+
+
+    download_success="Data Downloaded Successfully!"
+    return render(request,'add_program.html',{'success_msg':download_success})
+
+def contact_us(request):
+    if request.method == "GET":
+        return render(request,'contact.html')

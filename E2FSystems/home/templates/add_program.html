@@ -13,6 +13,10 @@
         <h1 class="headingGT"><span style="color: green">Green</span>Thumb</h1>
         <p class="para">Funding for energy projects (Business)</p>
     </div>
+
+    <div class="d-flex flex-row-reverse ">
+        <a href="/download_data/"><button  class="btn btn-success m-2">Download All Data</button></a>
+    </div>
     <div class="container mt-3">
         <form method="POST" action="/add_program/" enctype="multipart/form-data">
             {% csrf_token %}
@@ -21,7 +25,7 @@
                     {{success_msg}}
                 </div>
             {% endif %}
-            <div class="mb-3 mt-3">
+            <div class="mb-3">
             <label style="display:flex" for="email">Program Name:</label>
             <input type="text" class="form-control" id="email" placeholder="Enter Program Name" name="program_name">
             </div>
