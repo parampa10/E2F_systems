@@ -5,7 +5,7 @@ import os
 from django.shortcuts import render
 from django.db.models import Q
 from home.models import Admin, Program, UserSearch
-from openpyxl import Workbook
+#from openpyxl import Workbook
 
 # Create your views here.
 def home(request):
@@ -55,7 +55,7 @@ def search(request):
 
         programs = Program.objects.filter(
 
-            Q(funding_stream__contains=type_s)|
+            Q(funding_stream__contains=type_s)&
             Q(funding_stream__contains=type_s)|
 
             Q(eligibility__contains=company_sector_s) |
