@@ -25,6 +25,14 @@ body.app {
   color: #2c3e50;
 }
 
+.no-underline {
+  text-decoration: none !important;
+}
+
+/*effect on name*/
+
+
+
 .button {
   --c: #229091; /* the color*/
 

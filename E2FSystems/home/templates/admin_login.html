@@ -10,12 +10,17 @@
 
   <div class="outer">
     <div class="">
-        <h1 class="headingGT"><span style="color: green">Green</span>Thumb</h1>
+        <a href="/" style="text-decoration: none !important;"><h1 class="headingGT"><span style="color: green">Green</span>Thumb</h1></a>
         <p class="para">Funding for energy projects (Business)</p>
     </div>
     <div class="container mt-3">
         <form method="POST" action="/admin_login/" enctype="multipart/form-data">
             {% csrf_token %}
+            {% if success_msg %}
+                <div class="alert alert-success" role="alert">
+                    {{success_msg}}
+                </div>
+            {% endif %}
             {% if fail_msg %}
                 <div class="alert alert-danger" role="alert">
                     {{fail_msg}}
@@ -32,14 +37,14 @@
             </div>
 
             
-            <button type="submit" class="btn btn-success">Login</button>
+            <button type="submit" class="btn btn-outline-success">Login</button>
         </form>
     </div>
         
     <div class="foot">
         <div class="footer1">
             <hr class="footerhr"/>
-            <span class="footertext">© 2023 <a href="https://flowbite.com/" class="hover:underline">www.e2fsystems.com</a>. All Rights Reserved.</span>
+            <span class="footertext">© 2023 <a href="" class="hover:underline">www.e2fsystems.com</a>. All Rights Reserved.</span>
         </div>
     </div>
     </div>

@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import include, re_path,path
 
-from home.views import admin_login, contact_us, download_data, home,add_program,result,search
+from home.views import admin_login, contact_us, download_data, home,add_program, logout,result,search
 
 urlpatterns = [
     path('', home),
@@ -12,5 +12,6 @@ urlpatterns = [
     path('contact_us/',contact_us),
     path('search/',search),
     path('download_data/',download_data),
+    path('logout/',logout),
 
 ]

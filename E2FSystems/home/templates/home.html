@@ -28,91 +28,87 @@
     </head>
 <body class="app">
 
-  <div class="outer">
+<div class="outer">
     <div class="">
-        <h1 class="headingGT"><span style="color: green">Green</span>Thumb</h1>
+        <a href="/" style="text-decoration: none !important;"><h1 class="headingGT"><span style="color: green">Green</span>Thumb</h1></a>
         <p class="para">Funding for energy projects (Business)</p>
+    </div>
 
+    <div class="d-flex flex-row-reverse ">
+        <a href="/admin_login/"><button  class="btn btn-outline-success m-2">Admin Login</button></a>
+    </div>
 
-        <div class="d-flex flex-row-reverse ">
-            <a href="/admin_login/"><button  class="btn btn-success m-2">Admin Login</button></a>
-        </div>
+    <h4>Search Programs</h4>
 
-        <h4>Search Programs</h4>
-
-        <div class="container mt-3">
-            <form method="POST" action="/search/" enctype="multipart/form-data">
-                {% csrf_token %}
-                
-                <div class="mb-3 mt-3">
-                    <label style="display:flex" for="email">Program Type: &nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Program type: save on energy or enbridge gas program"></span></label>
+    <div class="container mt-3">
+        <form method="POST" action="/search/" enctype="multipart/form-data">
+            {% csrf_token %}
             
-                    <select name="program_type" class="form-select" aria-label="Default select example" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-                        <option value="electricity" selected>Electricity</option>
-                        <option value="gas">Gas</option>
-                    </select>
-                
-                </div>
-                
-                <div class="mb-3">
-                    <label for="pwd" style="display:flex">Company Sector:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="company's particular work-field"></span></label>
-                    <input type="text" class="form-control" placeholder="Enter Company Sector" name="company_sector" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-                </div>
+            <div class="mb-3 mt-3">
+                <label style="display:flex" for="email">Program Type: &nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Program type: save on energy or enbridge gas program"></span></label>
+        
+                <select name="program_type" class="form-select" aria-label="Default select example" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                    <option value="electricity" selected>Electricity</option>
+                    <option value="gas">Gas</option>
+                    <option value="all">ALL</option>
+                </select>
+            
+            </div>
+            
+            <div class="mb-3">
+                <label for="pwd" style="display:flex">Company Sector:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="company's particular work-field"></span></label>
+                <input type="text" class="form-control" placeholder="Enter Company Sector" name="company_sector" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+            </div>
 
-                <div class="mb-3">
-                <label for="pwd" style="display:flex">Postal Code:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="postal-code"></span></label>
-                <input type="text" class="form-control" placeholder="Enter Postal Code" name="postal_code">
-                </div>
-    
-                <div class="mb-3">
-                    <label for="pwd" style="display:flex">Employee Count:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="size of the company aprroximately"></span></label>
-                    <input type="text" class="form-control" placeholder="Enter Employee Count" name="employee_count">
-                </div>
-                
-                <div class="mb-3">
-                    <label for="pwd" style="display:flex">Annual Electricity budget:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="estimated electricity budget for your company"></span></label>
-                    <input type="text" class="form-control" id="pwd" placeholder="Enter Annual Electricity budget" name="electricity_budget">
-                </div>
-                
-                <div class="mb-3">
-                    <label for="pwd" style="display:flex">Annual Natural Gas budget:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="estimated gas budget for your company"></span></label>
-                    <input type="text" class="form-control" id="pwd" placeholder="Enter Annual Natural Gas budget" name="natural_gas_budget">
-                </div>
-    
-                <div class="mb-3">
-                    <label for="pwd" style="display:flex">Company name: (optional)&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's name"></span></label>
-                    <input type="text" class="form-control" placeholder="Enter Company Name" name="company_name">
-                </div>
+            <div class="mb-3">
+            <label for="pwd" style="display:flex">Postal Code:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="postal-code"></span></label>
+            <input type="text" class="form-control" placeholder="Enter Postal Code" name="postal_code">
+            </div>
 
-                <div class="mb-3">
-                    <label for="pwd" style="display:flex">Company Contact: (optional)&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's conatact"></span></label>
-                    <input type="text" class="form-control" placeholder="Enter Company Contact" name="company_contact">
-                </div>
-                
-                <button type="submit" class="btn btn-outline-info">Search</button>
-            </form>
-            <br>
+            <div class="mb-3">
+                <label for="pwd" style="display:flex">Employee Count:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="size of the company aprroximately"></span></label>
+                <input type="text" class="form-control" placeholder="Enter Employee Count" name="employee_count">
+            </div>
+            
+            <div class="mb-3">
+                <label for="pwd" style="display:flex">Annual Electricity budget:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="estimated electricity budget for your company"></span></label>
+                <input type="text" class="form-control" id="pwd" placeholder="Enter Annual Electricity budget" name="electricity_budget">
+            </div>
+            
+            <div class="mb-3">
+                <label for="pwd" style="display:flex">Annual Natural Gas budget:&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="estimated gas budget for your company"></span></label>
+                <input type="text" class="form-control" id="pwd" placeholder="Enter Annual Natural Gas budget" name="natural_gas_budget">
+            </div>
+
+            <div class="mb-3">
+                <label for="pwd" style="display:flex">Company name: (optional)&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's name"></span></label>
+                <input type="text" class="form-control" placeholder="Enter Company Name" name="company_name">
+            </div>
+
+            <div class="mb-3">
+                <label for="pwd" style="display:flex">Company Contact: (optional)&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's conatact"></span></label>
+                <input type="text" class="form-control" placeholder="Enter Company Contact" name="company_contact">
+            </div>
+            
+            <button type="submit" class="btn btn-outline-info">Search</button>
+        </form>
+        <br>
+    </div>
+    
+    
+    <div>
+        <div class="inline-flex">
+            
+            <a href="/contact_us/"><button type="button" class="btn btn-outline-primary">Contact Us</button></a>
+            <button type="button" class="btn btn-outline-danger">Subscribe</button>
         </div>
     </div>
-    <!-- <div class="grid grid-cols-12">
-        <div class="col-span-12 pt-4">
-            <router-link to="/" class="mr-2 text-white bg-btnDark hover:bg-btnDarkHover focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md px-10 py-2 text-sm text-center disabled:opacity-75 disabled:cursor-not-allowed">Employee</router-link>
-            <router-link to="/emp_add" class="mr-2 text-white bg-btnDark hover:bg-btnDarkHover focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md px-10 py-2 text-sm text-center disabled:opacity-75 disabled:cursor-not-allowed">Employee Add</router-link>
-        </div>
-    </div> -->
-    <div>
-            <div class="inline-flex">
-                
-                <a href="/contact_us/"><button type="button" class="btn btn-outline-primary">Contact Us</button></a>
-                <button type="button" class="btn btn-outline-danger">Subscribe</button>
-            </div>
-        </div>
 </div>
 
 <footer class="">
     <div class="footer1">
         <hr class="footerhr" />
-        <span class="footertext">© 2023 <a href="https://flowbite.com/" class="hover:underline">www.e2fsystems.com</a>. All Rights Reserved.</span>
+        <span class="footertext">© 2023 <a href="" class="hover:underline">www.e2fsystems.com</a>. All Rights Reserved.</span>
     </div>
 </footer>
 

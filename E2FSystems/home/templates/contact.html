@@ -13,61 +13,61 @@
     </head>
 <body class="app">
 
-  <div class="outer">
-    <div class="">
-        <h1 class="headingGT"><span style="color: green">Green</span>Thumb</h1>
-        <p class="para">Funding for energy projects (Business)</p>
-        
-        <div>
-            <div class="card m-5 text-center" style="border: 0cap;" >
-                <div class="card-header header-card" style="background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); font-size: 1.5rem; font-weight: bold;">
-                    Contact Information
+    <div class="outer">
+        <div class="">
+            <a href="/" style="text-decoration: none !important;"><h1 class="headingGT"><span style="color: green">Green</span>Thumb</h1></a>
+            <p class="para">Funding for energy projects (Business)</p>
+        </div> 
+            <div>
+                <div class="card m-5 text-center" style="border: 0cap;" >
+                    <div class="card-header header-card" style="background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); font-size: 1.5rem; font-weight: bold;">
+                        Contact Information
+                    </div>
+                    <div class="card-body" style="background: radial-gradient(788px at 0.7% 3.4%, rgb(164, 231, 192) 0%, rgb(255, 255, 255) 90%);;box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
+                        <h5 class="para" style="text-align: left; color: black; font-weight: bold; ">Energy & Sustainability Made Easy</h5>
+                        <h6 class="para" style="text-align: left; color: black; font-size: medium;">The sustainability-focused economy is here, and it's demanding change. Our proven solutions and services will improve your business operations, reduce your environmental impact, and give you a strategic advantage over your competitors. Together we can stop energy waste, reduce costs and advance sustainability.
+                        <br>
+                        <b>Act today with tomorrow in mind so future generations can enjoy a cleaner, greener earth.</b></h6>
+                    </div>
                 </div>
-                <div class="card-body" style="background: radial-gradient(788px at 0.7% 3.4%, rgb(164, 231, 192) 0%, rgb(255, 255, 255) 90%);;box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
-                  <h5 class="para" style="text-align: left; color: black; font-weight: bold; ">Energy & Sustainability Made Easy</h5>
-                  <h6 class="para" style="text-align: left; color: black; font-size: medium;">The sustainability-focused economy is here, and it's demanding change. Our proven solutions and services will improve your business operations, reduce your environmental impact, and give you a strategic advantage over your competitors. Together we can stop energy waste, reduce costs and advance sustainability.
-                    <br>
-                    <b>Act today with tomorrow in mind so future generations can enjoy a cleaner, greener earth.</b></h6>
-                </div>
-              </div>
-        </div>
+            </div>
 
-        <div>
-            <div class="card m-5 text-center" style="border: 0cap;" >
-                
-                <div class="card-body" style="background: radial-gradient(788px at 0.7% 3.4%, rgb(164, 231, 192) 0%, rgb(255, 255, 255) 90%);box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
-                  <h5 class="para" style="text-align: left; color: black; font-weight: bold; ">Send Enquiry</h5>
-                  <h6 class="para" style="text-align: left; color: black; font-size: medium;">
-                    <form method="POST" action="/contact_us/" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {% if success_msg %}
-                            <div class="alert alert-success" role="alert">
-                                {{success_msg}}
+            <div>
+                <div class="card m-5 text-center" style="border: 0cap;" >
+                    
+                    <div class="card-body" style="background: radial-gradient(788px at 0.7% 3.4%, rgb(164, 231, 192) 0%, rgb(255, 255, 255) 90%);box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
+                    <h5 class="para" style="text-align: left; color: black; font-weight: bold; ">Send Enquiry</h5>
+                    <h6 class="para" style="text-align: left; color: black; font-size: medium;">
+                        <form method="POST" action="/contact_us/" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if success_msg %}
+                                <div class="alert alert-success" role="alert">
+                                    {{success_msg}}
+                                </div>
+                            {% endif %}
+                            <div class="mb-3">
+                                <label for="pwd" style="display:flex">Email:&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="estimated gas budget for your company"></span></label>
+                                <input type="text" class="form-control" id="pwd" placeholder="Enter Email" name="contact_email">
                             </div>
-                        {% endif %}
-                        <div class="mb-3">
-                            <label for="pwd" style="display:flex">Email:&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="estimated gas budget for your company"></span></label>
-                            <input type="text" class="form-control" id="pwd" placeholder="Enter Email" name="contact_email">
-                        </div>
+                
+                            <div class="mb-3">
+                                <label for="pwd" style="display:flex">Company name:&nbsp;&nbsp;<span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's name"></span></label>
+                                <input type="text" class="form-control" placeholder="Enter Company Name" name="contact_company">
+                            </div>
             
-                        <div class="mb-3">
-                            <label for="pwd" style="display:flex">Company name:&nbsp;&nbsp;<span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's name"></span></label>
-                            <input type="text" class="form-control" placeholder="Enter Company Name" name="contact_company">
-                        </div>
-        
-                        <div class="mb-3">
-                            <label for="pwd" style="display:flex">Additional Info.&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's conatact"></span></label>
-                            <input type="text" class="form-control" placeholder="Enter Additional Info." name="additional_info">
-                        </div>
-                        
-                        <button type="submit" class="btn btn-outline-info"> Send </button>
-                    </form>
-                    <br>
-                    <b>Phone: +1 (999)-999-9999 </b><br>
-                    <b>Email: plamen.notov@e2fsystems.com</b></h6>
+                            <div class="mb-3">
+                                <label for="pwd" style="display:flex">Additional Info.&nbsp;&nbsp; <span class="fa fa-info" data-toggle="tooltip" data-original-title="Your company's conatact"></span></label>
+                                <input type="text" class="form-control" placeholder="Enter Additional Info." name="additional_info">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-outline-info"> Send </button>
+                        </form>
+                        <br>
+                        <b>Phone: +1 (999)-999-9999 </b><br>
+                        <b>Email: plamen.notov@e2fsystems.com</b></h6>
+                    </div>
                 </div>
-              </div>
-        </div>
+            </div>
 
 
     </div>
@@ -78,16 +78,16 @@
         </div>
     </div> -->
     <div>
-            <div class="inline-flex">
-                <a href="/"><button type="button" class="btn btn-outline-success">Back</button></a>  
-            </div>
+        <div class="inline-flex">
+            <a href="/"><button type="button" class="btn btn-outline-success">Back</button></a>  
         </div>
-</div>
+    </div>
+
 
 <footer class="">
     <div class="footer1">
         <hr class="footerhr" />
-        <span class="footertext">© 2023 <a href="https://flowbite.com/" class="hover:underline">www.e2fsystems.com</a>. All Rights Reserved.</span>
+        <span class="footertext">© 2023 <a href="" class="hover:underline">www.e2fsystems.com</a>. All Rights Reserved.</span>
     </div>
 </footer>
 

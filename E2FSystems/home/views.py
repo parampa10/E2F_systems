@@ -4,7 +4,7 @@ from django.http import HttpResponse
 import os
 from django.shortcuts import render
 from django.db.models import Q
-from home.models import Admin, Program, UserSearch
+from home.models import Admin, ContactInfo, Program, UserSearch
 #from openpyxl import Workbook
 
 # Create your views here.
@@ -15,6 +15,7 @@ def result(request):
     return render(request, 'result.html')
 
 def admin_login(request):
+    logged_in=False
     if request.method == 'GET':
         return render(request, 'admin_login.html')
     else:
@@ -26,8 +27,13 @@ def admin_login(request):
         except:
             fail_msg="Username does not exists"
             return render(request,'admin_login.html',{'fail_msg':fail_msg})
+        
         if user is not None and user.password==password_:
-            return render(request,'add_program.html')
+            response=render(request,'add_program.html')
+            logged_in=True
+            response.set_cookie('logged_in', logged_in,max_age=60*60)
+
+            return response
         else:
             fail_msg="Password is incorrect"
             return render(request,'admin_login.html',{'fail_msg':fail_msg})
@@ -50,26 +56,39 @@ def search(request):
 
         if program_type_s=="electricity":
             type_s="SaveOnEnergy"
-        else:
+
+            programs = Program.objects.filter(
+
+                Q(funding_stream__contains=type_s)
+            )
+
+        elif program_type_s=="gas":
             type_s="ENBRIDGE GAS"
 
-        programs = Program.objects.filter(
+            programs = Program.objects.filter(
 
-            Q(funding_stream__contains=type_s)&
-            Q(funding_stream__contains=type_s)|
+                Q(funding_stream__contains=type_s)
+            )
 
-            Q(eligibility__contains=company_sector_s) |
+        else:
+            type_s=""
+            programs = Program.objects.all()
+            
+
+        programs_final = programs.filter(
+
+            Q(eligibility__contains=company_sector_s) | 
             Q(project_type__contains=company_sector_s) |
 
-            Q(eligibility__contains=employee_count_s) | 
+            Q(eligibility__contains=employee_count_s) |
 
-            Q(eligibility__contains=electricity_budget_s) | 
+            Q(eligibility__contains=electricity_budget_s)| 
 
             Q(eligibility__contains=natural_gas_budget_s)
         )
 
         
-        print(programs)
+        
 
         ##saving search for future 
         new_search=UserSearch(
@@ -85,15 +104,24 @@ def search(request):
             )
 
         new_search.save()
-        
+        print("#####################################")
+        print(programs_final)
+        if len(programs_final) ==0:
+            fail_msg="Could not find matching criteria!, Here are some possible results"
+            programs_final=Program.objects.all()
+            return render(request,'result.html',{"programs":programs_final,"fail_msg":fail_msg})
 
-        return render(request,'result.html',{"programs":programs})
+        return render(request,'result.html',{"programs":programs_final})
 
 def add_program(request):
 
     if request.method == 'GET':
-        print("inget")
-        return render(request,'add_program.html')
+    
+        if 'logged_in' in request.COOKIES and request.COOKIES['logged_in']==True:
+            return render(request,'add_program.html')
+        else:
+            fail_msg="You are not logged-in, Please log in first!"
+            return render(request,"admin_login.html",{"fail_msg":fail_msg})
     else:
         
         ## getting data from user
@@ -129,6 +157,15 @@ def add_program(request):
         add_success="Program Added Successfully!"
         return render(request,'add_program.html',{'success_msg':add_success})
     
+
+def logout(request):
+    if request.method == 'GET':
+        
+        success_msg="You are logged out successfully!"
+        response=render(request,"admin_login.html",{"success_msg":success_msg})
+        response.delete_cookie('logged_in')
+        return response
+
 def contact_us(request):
     if request.method == "GET":
         return render(request,'contact.html')

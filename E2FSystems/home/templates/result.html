@@ -18,20 +18,26 @@
 
 <div class="flex flex-col h-screen justify-between">
     <div class="">
-        <div class="mt-2">
-            <h1 class="mb-2 text-4xl font-bold leading-none tracking-tight md:text-4xl lg:text-4xl" style="color: green">Results</h1>
-            <p class="mb-6 text-2xl font-normal text-gray-500 sm:px-16 dark:text-gray-400">Funding for energy projects (Business)</p>
+        <div class="effect">
+            <a href="/" style="text-decoration: none !important;"><h1 class="headingGT"><span style="color: green">Results</span></h1></a>
+            <p class="para">Funding for energy projects (Business)</p>
         </div>
         
-        Results:
+        
+        
         <br/>
         
         <div class="container">
+            {% if fail_msg %}
+                <div class="alert alert-danger" role="alert">
+                    {{fail_msg}}
+                </div>
+            {% endif %}
         {% for p in programs %}
             <div class="card" style="border: 0cap;">
                 <div class="card-header" style="background: linear-gradient(to top, #0ba360 0%, #3cba92 100%); font-size: 1.5rem; font-weight: bold;">{{p.program_name}}</div>
                 <div class="card-body" style="background: radial-gradient(788px at 0.7% 3.4%, rgb(164, 231, 192) 0%, rgb(255, 255, 255) 90%);box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
-                    {{p.link}}
+                    <a href="{{p.link}}" style="color:black;">{{p.link}}</a>
                 </div>
             </div>
             <br>
@@ -59,11 +65,11 @@
         </div>
         <div>
             <div class="inline-flex">
-                <a href="/contact_us/"><button type="button" class="btn btn-primary">Contact Us</button></a>
-                <button type="button" class="btn btn-danger">Subscribe</button>
+                <a href="/contact_us/"><button type="button" class="btn btn-outline-primary">Contact Us</button></a>
+                <button type="button" class="btn btn-outline-danger">Subscribe</button>
                 <br>
                 <br>
-                <a href="/"><button type="button" class="btn btn-success">Back</button></a>  
+                <a href="/"><button type="button" class="btn btn-outline-success">Back</button></a>  
             </div>
                     
         </div>
@@ -78,7 +84,7 @@
     <div class="foot">
         <div class="footer1">
             <hr class="footerhr"/>
-            <span class="footertext">© 2023 <a href="https://flowbite.com/" class="hover:underline">www.e2fsystems.com</a>. All Rights Reserved.</span>
+            <span class="footertext">© 2023 <a href="" class="hover:underline">www.e2fsystems.com</a>. All Rights Reserved.</span>
         </div>
     </div>
 </div>
