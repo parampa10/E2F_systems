@@ -168,9 +168,11 @@ def logout(request):
 
 def contact_us(request):
     if request.method == "GET":
+        
         return render(request,'contact.html')
     else:
         ## getting data from user
+        
         contact_email_c=request.POST["contact_email"]
         contact_company_c=request.POST["contact_company"]
         additional_info_c=request.POST["additional_info"]
@@ -179,11 +181,13 @@ def contact_us(request):
             contact_email=contact_email_c,
             contact_company=contact_company_c,
             additional_info=additional_info_c
-            )
-
+        )
+        
         new_inquiry.save()
+        
         add_success="Request Sent Successfully!"
-        return render(request,'contact.html',{'success_msg':add_success})    
+
+        return render(request,'contact.html', {'success_msg':add_success})    
 
 def download_data(request):
 
@@ -202,13 +206,10 @@ def download_data(request):
     for row in data:
         row_data = [row.id, row.program_name, row.eligibility, row.link, row.project_type, row.description, row.funding_stream]
         writer.writerow(row_data)
+    
     return response
 
 
 
-    download_success="Data Downloaded Successfully!"
-    return render(request,'add_program.html',{'success_msg':download_success})
+    
 
-def contact_us(request):
-    if request.method == "GET":
-        return render(request,'contact.html')
