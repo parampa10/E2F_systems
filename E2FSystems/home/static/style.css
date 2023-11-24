@@ -15,7 +15,7 @@ body.app {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  /* background-color: rgba(76, 91, 53, 0.7); */
+  background-color: #bde2cc;
 }
 
 .app {
@@ -286,4 +286,26 @@ color: #6B7280;
   text-align: center; 
  }
 }
+
+.twelve h4 {
+  font-size:26px; font-weight:700;  letter-spacing:1px; text-transform:uppercase; width:160px; text-align:center; margin:auto; white-space:nowrap; padding-bottom:13px; margin-right:950px ;
+}
+.twelve h4:before {
+    background-color: #008000;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 75px;
+    margin-bottom: 5px;
+}
+.twelve h4:after {
+    background-color: #008000;
+    content: '';
+    display: block;
+  position:absolute; right: 840px; bottom:0px;
+    height: 3px;
+    width: 75px;
+    margin-bottom: 692px;
+}
+
 

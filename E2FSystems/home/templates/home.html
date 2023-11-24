@@ -27,7 +27,6 @@
     
     </head>
 <body class="app">
-
 <div class="outer">
     <div class="">
         <a href="/" style="text-decoration: none !important;"><h1 class="headingGT"><span style="color: green">Green</span>Thumb</h1></a>
@@ -37,9 +36,9 @@
     <div class="d-flex flex-row-reverse ">
         <a href="/admin_login/"><button  class="btn btn-success m-2">Admin Login</button></a>
     </div>
-
-    <h4>Search Programs</h4>
-
+    <div class="twelve">
+    <h4>Explore Programs</h4>
+    </div>
     <div class="container mt-3">
         <form method="POST" action="/search/" enctype="multipart/form-data">
             {% csrf_token %}
